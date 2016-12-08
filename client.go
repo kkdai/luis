@@ -3,6 +3,7 @@ package luis
 import (
 	"bytes"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -27,7 +28,8 @@ func NewClient(key string) *Client {
 // Connect with API url and data, return response byte or error if http.Status is not OK
 func (c *Client) Connect(mode string, url string, data *bytes.Buffer, useJson bool) ([]byte, *ErrorResponse) {
 	client := &http.Client{}
-	r, _ := http.NewRequest(mode, url, data)
+	fmt.Println(mode, url, data)
+	r, _ := http.NewRequest(mode, url, nil)
 
 	if useJson {
 		r.Header.Add("Content-Type", JsonContent)

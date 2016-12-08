@@ -1,10 +1,10 @@
 package luis
 
 const (
-	EMOTION_URL string = "https://api.projectoxford.ai/emotion/v1.0/"
-	EMOTION_API string = "recognize"
+	LUIS_URL         string = "https://api.projectoxford.ai/luis/v1.0/prog/apps/"
+	LUIS_API_INTENTS string = "intents"
 )
 
-func getEmotionURL() string {
-	return EMOTION_URL + EMOTION_API
+func getIntentListURL(apid string) string {
+	return LUIS_URL + apid + "/" + LUIS_API_INTENTS
 }

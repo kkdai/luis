@@ -5,6 +5,13 @@ import (
 	"log"
 )
 
+//IntentListResponse :
+type IntentListResponse []struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+	Type string `json:"type"`
+}
+
 //Storage all HTTP response include http.response code and error code
 type ErrorResponse struct {
 	ErrorCode int

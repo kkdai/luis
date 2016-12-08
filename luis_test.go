@@ -9,27 +9,29 @@ import (
 )
 
 var API_KEY string
+var APPID string
 
 const ()
 
 func init() {
-	API_KEY = os.Getenv("MSFT_KEY")
+	API_KEY = os.Getenv("SUB_KEY")
+	APPID = os.Getenv("APP_ID")
 	if API_KEY == "" {
-		fmt.Println("Please export your key to environment first, `export MSFT_KEY=12234`")
+		fmt.Println("Please export your key to environment first, `export SUB_KEY=12234 && export APP_ID=5678`")
 	}
 }
 
-func TestEmotion(t *testing.T) {
+func TestIntentList(t *testing.T) {
 	if API_KEY == "" {
 		return
 	}
 
-	e := NewEmotion(API_KEY)
+	e := NewLuis(API_KEY, APPID)
 	if e == nil {
 		t.Error("Cannot connect to server")
 	}
 
-	res, err := e.EmotionUrl("https://oxfordportal.blob.core.windows.net/emotion/recognition1.jpg")
+	res, err := e.IntelList()
 
 	if err != nil {
 		t.Error("Error happen on :", err.Err)
