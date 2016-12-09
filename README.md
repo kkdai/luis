@@ -1,6 +1,6 @@
-mstranslator
+LUIS.ai for Golang
 ======================
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/kkdai/mstranslator/master/LICENSE)  [![GoDoc](https://godoc.org/github.com/kkdai/goFbAlbum?status.svg)](https://godoc.org/github.com/kkdai/mstranslator)  [![Build Status](https://travis-ci.org/kkdai/luis.svg)](https://travis-ci.org/kkdai/luis)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/kkdai/luis/master/LICENSE)  [![GoDoc](https://godoc.org/github.com/kkdai/luis?status.svg)](https://godoc.org/github.com/kkdai/luis)  [![Build Status](https://travis-ci.org/kkdai/luis.svg)](https://travis-ci.org/kkdai/luis)
  
 
 
@@ -19,13 +19,6 @@ How to use it
 
 ```go
 ```
-
-
-
-Example on mstranslator
----------------
-
-
 
 
 Contribute
