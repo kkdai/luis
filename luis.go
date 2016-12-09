@@ -1,12 +1,12 @@
 package luis
 
-import "fmt"
-
+//Luis :
 type Luis struct {
 	appid  string
 	client *Client
 }
 
+//NewLuis :
 func NewLuis(key string, appid string) *Luis {
 	if len(key) == 0 {
 		return nil
@@ -22,7 +22,6 @@ func NewLuis(key string, appid string) *Luis {
 //Retreives information about the intent models.
 func (l *Luis) IntelList() ([]byte, *ErrorResponse) {
 	url := getIntentListURL(l.appid)
-	fmt.Println(url)
 	return l.client.Connect("GET", url, nil, true)
 }
 
@@ -30,7 +29,6 @@ func (l *Luis) IntelList() ([]byte, *ErrorResponse) {
 //gets a list of all available action channels for the application
 func (l *Luis) ActionChannels() ([]byte, *ErrorResponse) {
 	url := getActionChannels(l.appid)
-	fmt.Println(url)
 	return l.client.Connect("GET", url, nil, true)
 }
 
@@ -39,6 +37,12 @@ func (l *Luis) ActionChannels() ([]byte, *ErrorResponse) {
 func (l *Luis) Predict(utterance string) ([]byte, *ErrorResponse) {
 	url := getPredictURL(l.appid)
 	data := getStringDataByteBuffer(utterance)
-	fmt.Println(url)
 	return l.client.Connect("POST", url, data, true)
+}
+
+//Train :Training Status
+//gets the training status of all models of the specified application
+func (l *Luis) Train(utterance string) ([]byte, *ErrorResponse) {
+	url := getTrainURL(l.appid)
+	return l.client.Connect("POST", url, nil, true)
 }

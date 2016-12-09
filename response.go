@@ -46,3 +46,17 @@ type ActionChannelsResponse []struct {
 		SupportedAuthenticationTypes []int `json:"SupportedAuthenticationTypes"`
 	} `json:"Actions"`
 }
+
+//PredictResponse :
+type PredictResponse []struct {
+	IntentsResults []struct {
+		Name  string      `json:"Name"`
+		Label interface{} `json:"label"`
+		Score float64     `json:"score"`
+	} `json:"IntentsResults"`
+	EntitiesResults []interface{} `json:"EntitiesResults"`
+	UtteranceText   string        `json:"utteranceText"`
+	TokenizedText   []string      `json:"tokenizedText"`
+	ExampleID       string        `json:"exampleId"`
+	Metadata        interface{}   `json:"metadata"`
+}
