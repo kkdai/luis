@@ -25,11 +25,18 @@ func NewClient(key string) *Client {
 	return c
 }
 
-// Connect with API url and data, return response byte or error if http.Status is not OK
+//Connect :with API url and data, return response byte or error if http.Status is not OK
 func (c *Client) Connect(mode string, url string, data *bytes.Buffer, useJson bool) ([]byte, *ErrorResponse) {
 	client := &http.Client{}
 	fmt.Println(mode, url, data)
-	r, _ := http.NewRequest(mode, url, nil)
+
+	r := &http.Request{}
+	if data == nil {
+		r, _ = http.NewRequest(mode, url, nil)
+
+	} else {
+		r, _ = http.NewRequest(mode, url, data)
+	}
 
 	if useJson {
 		r.Header.Add("Content-Type", JsonContent)

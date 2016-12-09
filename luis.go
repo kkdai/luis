@@ -19,8 +19,26 @@ func NewLuis(key string, appid string) *Luis {
 }
 
 //IntelList :Get All Intent List of this app
-func (e *Luis) IntelList() ([]byte, *ErrorResponse) {
-	url := getIntentListURL(e.appid)
+//Retreives information about the intent models.
+func (l *Luis) IntelList() ([]byte, *ErrorResponse) {
+	url := getIntentListURL(l.appid)
 	fmt.Println(url)
-	return e.client.Connect("GET", url, nil, true)
+	return l.client.Connect("GET", url, nil, true)
+}
+
+//ActionChannels :get Available Action Channels
+//gets a list of all available action channels for the application
+func (l *Luis) ActionChannels() ([]byte, *ErrorResponse) {
+	url := getActionChannels(l.appid)
+	fmt.Println(url)
+	return l.client.Connect("GET", url, nil, true)
+}
+
+//Predict :get Train Model Predictions
+//gets the trained model predictions for the input examples
+func (l *Luis) Predict(utterance string) ([]byte, *ErrorResponse) {
+	url := getPredictURL(l.appid)
+	data := getStringDataByteBuffer(utterance)
+	fmt.Println(url)
+	return l.client.Connect("POST", url, data, true)
 }

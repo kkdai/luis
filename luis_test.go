@@ -21,17 +21,50 @@ func init() {
 	}
 }
 
+func getLuis(t *testing.T) *Luis {
+	e := NewLuis(API_KEY, APPID)
+	if e == nil {
+		t.Error("Cannot connect to server")
+	}
+	return e
+}
+
 func TestIntentList(t *testing.T) {
 	if API_KEY == "" {
 		return
 	}
 
-	e := NewLuis(API_KEY, APPID)
-	if e == nil {
-		t.Error("Cannot connect to server")
-	}
+	e := getLuis(t)
 
 	res, err := e.IntelList()
+
+	if err != nil {
+		t.Error("Error happen on :", err.Err)
+	}
+	fmt.Println("Got response:", string(res))
+	result := NewIntentListResponse(res)
+	fmt.Println("Luis Intent Ret", result)
+}
+
+func TestActionChannels(t *testing.T) {
+	if API_KEY == "" {
+		return
+	}
+	e := getLuis(t)
+	res, err := e.ActionChannels()
+
+	if err != nil {
+		t.Error("Error happen on :", err.Err)
+	}
+	fmt.Println("Got response:", string(res))
+}
+
+func TestPredict(t *testing.T) {
+	if API_KEY == "" {
+		return
+	}
+	e := getLuis(t)
+	res, err := e.Predict("test string")
 
 	if err != nil {
 		t.Error("Error happen on :", err.Err)

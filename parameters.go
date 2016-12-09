@@ -36,3 +36,9 @@ func getUserDataByteBuffer(userData string) *bytes.Buffer {
 	return bytes.NewBuffer(byteData)
 
 }
+
+func getStringDataByteBuffer(userData string) *bytes.Buffer {
+	byteData := []byte(fmt.Sprintf(`["%s"]`, userData))
+	return bytes.NewBuffer(byteData)
+
+}

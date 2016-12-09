@@ -1,10 +1,24 @@
 package luis
 
 const (
-	LUIS_URL         string = "https://api.projectoxford.ai/luis/v1.0/prog/apps/"
-	LUIS_API_INTENTS string = "intents"
+	//LuisURL :Basic URL
+	LuisURL string = "https://api.projectoxford.ai/luis/v1.0/prog/apps/"
+	//LuisAPIIntents :API Intent List
+	LuisAPIIntents string = "intents"
+	//LuisAPIActionChannels :API Action Channels
+	LuisAPIActionChannels string = "actionChannels"
+	//LuisAPIPredict :API Predict
+	LuisAPIPredict string = "predict"
 )
 
 func getIntentListURL(apid string) string {
-	return LUIS_URL + apid + "/" + LUIS_API_INTENTS
+	return LuisURL + apid + "/" + LuisAPIIntents
+}
+
+func getActionChannels(apid string) string {
+	return LuisURL + apid + "/" + LuisAPIActionChannels
+}
+
+func getPredictURL(apid string) string {
+	return LuisURL + apid + "/" + LuisAPIPredict
 }
