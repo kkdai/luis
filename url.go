@@ -9,8 +9,10 @@ const (
 	LuisAPIActionChannels string = "actionChannels"
 	//LuisAPIPredict :API Predict
 	LuisAPIPredict string = "predict"
-	//LuisAPITrain :API Predict
+	//LuisAPITrain :API Train
 	LuisAPITrain string = "train"
+	//LuisAPIAddExample :API Add Label
+	LuisAPIAddExample string = "example"
 )
 
 func getIntentListURL(apid string) string {
@@ -27,4 +29,8 @@ func getPredictURL(apid string) string {
 
 func getTrainURL(apid string) string {
 	return LuisURL + apid + "/" + LuisAPITrain
+}
+
+func getAddExampleURL(apid string) string {
+	return LuisURL + apid + "/" + LuisAPIAddExample
 }

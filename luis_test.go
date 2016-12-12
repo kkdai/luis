@@ -71,3 +71,30 @@ func TestPredict(t *testing.T) {
 	}
 	fmt.Println("Got response:", string(res))
 }
+
+func TestTrain(t *testing.T) {
+	if API_KEY == "" {
+		return
+	}
+	e := getLuis(t)
+	res, err := e.Train()
+
+	if err != nil {
+		t.Error("Error happen on :", err.Err)
+	}
+	fmt.Println("Got response:", string(res))
+}
+
+func TestExample(t *testing.T) {
+	if API_KEY == "" {
+		return
+	}
+	e := getLuis(t)
+	ex := ExampleJson{ExampleText: "test", SelectedIntentName: "test2"}
+	res, err := e.AddLabel(ex)
+
+	if err != nil {
+		t.Error("Error happen on :", err.Err)
+	}
+	fmt.Println("Got response:", string(res))
+}

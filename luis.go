@@ -1,5 +1,11 @@
 package luis
 
+import (
+	"bytes"
+	"encoding/json"
+	"log"
+)
+
 //Luis :
 type Luis struct {
 	appid  string
@@ -42,7 +48,19 @@ func (l *Luis) Predict(utterance string) ([]byte, *ErrorResponse) {
 
 //Train :Training Status
 //gets the training status of all models of the specified application
-func (l *Luis) Train(utterance string) ([]byte, *ErrorResponse) {
+func (l *Luis) Train() ([]byte, *ErrorResponse) {
 	url := getTrainURL(l.appid)
 	return l.client.Connect("POST", url, nil, true)
+}
+
+//AddLabel :Add Label
+// Adds a labeled example to the specified application
+func (l *Luis) AddLabel(example ExampleJson) ([]byte, *ErrorResponse) {
+	url := getAddExampleURL(l.appid)
+	bytExample, err := json.Marshal(example)
+	if err != nil {
+		log.Println("err:", err)
+		return nil, nil
+	}
+	return l.client.Connect("POST", url, bytes.NewBuffer(bytExample), true)
 }
