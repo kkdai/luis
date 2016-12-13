@@ -70,6 +70,7 @@ func TestPredict(t *testing.T) {
 		t.Error("Error happen on :", err.Err)
 	}
 	fmt.Println("Got response:", string(res))
+	fmt.Println("Get the best predict result:", GetBestScoreIntent(NewPredictResponse(res)))
 }
 
 func TestTrain(t *testing.T) {
