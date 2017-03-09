@@ -11,22 +11,30 @@ LUIS lets your app understand language
 - LUIS is in beta and free to use
 - Supported browsers: Internet Explorer 10/11, Chrome
  
-![](https://www.luis.ai/Content/images/CreateLanguageModels.png)
+In LUIS you can:
 
-Create language understanding models.
-
-![](https://www.luis.ai/Content/images/UsePrebuiltModels.png)
-
-Use pre-built, world-class models from Bing and Cortana.
-
-![](https://www.luis.ai/Content/images/DeployModels.png)
-
-Deploy your models to an HTTP endpoint.
-
-![](https://www.luis.ai/Content/images/ConsumeModels.png)
-
-Activate models on any device.
+- Create language understanding models.
+- Use pre-built, world-class models from Bing and Cortana.
+- Deploy your models to an HTTP endpoint.
+- Activate models on any device.
  
+Here is some suggestion and limitation you might want to check before add all you intent. [Chinese](https://ericyeh92094.gitbooks.io/a-simple-wechat-chatbot-generator/content/generator/%E8%87%AA%E7%84%B6%E8%AA%9E%E8%A8%80%E8%99%95%E7%90%86.html) 
+ 
+### How to get APP_ID and APP_KEY
+
+#### APP_KEY
+
+Login and go to LUIS key page [https://www.luis.ai/home/keys](https://www.luis.ai/home/keys)
+
+You can see the `API_KEY` in "My Keys".
+
+![](images/luis_api.png)
+
+#### APP_ID
+
+Create a new App (if you don't have one) and in the APP dashboard, you can get `APP_ID` from web URL. It might be `12341be8-8cfb-471c-b05a-636d58cd5678`
+
+![](images/APP_ID.png)
 
 Installation
 ---------------
@@ -46,6 +54,8 @@ var APPID string
 
 func main() {
 	APPID = os.Getenv("APP_ID")
+	API_KEY = os.Getenv("SUB_KEY")
+
 	if API_KEY == "" {
 		fmt.Println("Please export your key to environment first, `export SUB_KEY=12234 && export APP_ID=5678`")
 
