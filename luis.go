@@ -24,9 +24,9 @@ func NewLuis(key string, appid string) *Luis {
 	return e
 }
 
-//IntelList :Get All Intent List of this app
+//IntentList :Get All Intent List of this app
 //Retreives information about the intent models.
-func (l *Luis) IntelList() ([]byte, *ErrorResponse) {
+func (l *Luis) IntentList() ([]byte, *ErrorResponse) {
 	url := getIntentListURL(l.appid)
 	return l.client.Connect("GET", url, nil, true)
 }
