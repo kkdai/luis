@@ -63,7 +63,7 @@ func main() {
 		return
 	}
 
-	e := getLuis(t)
+	e := NewLuis(API_KEY, APPID)
 
 	res, err := e.IntelList()
 
