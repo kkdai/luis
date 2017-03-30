@@ -36,7 +36,7 @@ func TestIntentList(t *testing.T) {
 
 	e := getLuis(t)
 
-	res, err := e.IntelList()
+	res, err := e.IntentList()
 
 	if err != nil {
 		t.Error("Error happen on :", err.Err)
