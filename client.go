@@ -60,7 +60,7 @@ func (c *Client) Connect(mode string, url string, data *bytes.Buffer, useJson bo
 		return nil, ret
 	}
 
-	if resp.StatusCode != http.StatusOK {
+	if resp.StatusCode > http.StatusAccepted {
 		ret.ErrorCode = resp.StatusCode
 		ret.Err = errors.New("Error on:" + string(body))
 		log.Println("Error happen! body:", string(body))

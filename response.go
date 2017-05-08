@@ -3,13 +3,47 @@ package luis
 import (
 	"encoding/json"
 	"log"
+	"time"
 )
+
+//AppInfo : Display app detail info
+type AppInfo struct {
+	ID              string      `json:"id"`
+	Name            string      `json:"name"`
+	Description     interface{} `json:"description"`
+	Culture         string      `json:"culture"`
+	UsageScenario   string      `json:"usageScenario"`
+	Domain          string      `json:"domain"`
+	VersionsCount   int         `json:"versionsCount"`
+	CreatedDateTime time.Time   `json:"createdDateTime"`
+	Endpoints       struct {
+		PRODUCTION struct {
+			VersionID           string    `json:"versionId"`
+			IsStaging           bool      `json:"isStaging"`
+			EndpointURL         string    `json:"endpointUrl"`
+			AssignedEndpointKey string    `json:"assignedEndpointKey"`
+			PublishedDateTime   time.Time `json:"publishedDateTime"`
+		} `json:"PRODUCTION"`
+	} `json:"endpoints"`
+	EndpointHitsCount int `json:"endpointHitsCount"`
+}
 
 //IntentListResponse :
 type IntentListResponse []struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
 	Type string `json:"type"`
+}
+
+//NewAppInfo :
+func NewAppInfo(raw []byte) *AppInfo {
+	ret := &AppInfo{}
+	err := json.Unmarshal(raw, &ret)
+	if err != nil {
+		log.Println("json unmarshal err:", err)
+		return ret
+	}
+	return ret
 }
 
 //NewIntentListResponse :

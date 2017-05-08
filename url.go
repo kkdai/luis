@@ -1,8 +1,10 @@
 package luis
 
 const (
-	//LuisURL :Basic URL
-	LuisURL string = "https://api.projectoxford.ai/luis/v1.0/prog/apps/"
+	//LuisURL :Basic URL (V1.0)
+	LuisURL string = "https://westus.api.cognitive.microsoft.com/luis/api/v2.0/apps/"
+	// {ap/pId}/versions/{versionId}/example
+
 	//LuisAPIIntents :API Intent List
 	LuisAPIIntents string = "intents"
 	//LuisAPIActionChannels :API Action Channels
@@ -15,22 +17,25 @@ const (
 	LuisAPIAddExample string = "example"
 )
 
-func getIntentListURL(apid string) string {
-	return LuisURL + apid + "/" + LuisAPIIntents
+func getAppInfo(appid string) string {
+	return LuisURL + appid
+}
+func getIntentListURL(apid string, versionid string) string {
+	return LuisURL + apid + "/versions/" + versionid + "/" + LuisAPIIntents
 }
 
-func getActionChannels(apid string) string {
-	return LuisURL + apid + "/" + LuisAPIActionChannels
+func getActionChannels(apid string, versionid string) string {
+	return LuisURL + apid + "/versions/" + versionid + "/" + LuisAPIActionChannels
 }
 
-func getPredictURL(apid string) string {
-	return LuisURL + apid + "/" + LuisAPIPredict
+func getPredictURL(apid string, versionid string) string {
+	return LuisURL + apid + "/versions/" + versionid + "/" + LuisAPIPredict
 }
 
-func getTrainURL(apid string) string {
-	return LuisURL + apid + "/" + LuisAPITrain
+func getTrainURL(apid string, versionid string) string {
+	return LuisURL + apid + "/versions/" + versionid + "/" + LuisAPITrain
 }
 
-func getAddExampleURL(apid string) string {
-	return LuisURL + apid + "/" + LuisAPIAddExample
+func getAddExampleURL(apid string, versionid string) string {
+	return LuisURL + apid + "/versions/" + versionid + "/" + LuisAPIAddExample
 }

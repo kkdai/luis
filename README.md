@@ -36,6 +36,15 @@ Create a new App (if you don't have one) and in the APP dashboard, you can get `
 
 ![](images/APP_ID.png)
 
+#### Version ID (Important)
+
+Before use this SDK, you must run follow step in luis.ai dashboard.
+
+- Create new app
+- Add few intent
+- Add `Endpoint Key` (You could use your API key)
+- Publish your model.
+
 Installation
 ---------------
 
@@ -45,7 +54,6 @@ go get github.com/kkdai/luis
 
 How to use it
 ---------------
-
 
 ```go
 
