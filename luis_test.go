@@ -36,7 +36,7 @@ func TestIntentList(t *testing.T) {
 
 	e := getLuis(t)
 
-	res, err := e.IntentList()
+	res, err := e.IntelList()
 
 	if err != nil {
 		t.Error("Error happen on :", err.Err)
@@ -46,18 +46,18 @@ func TestIntentList(t *testing.T) {
 	fmt.Println("Luis Intent Ret", result)
 }
 
-func TestActionChannels(t *testing.T) {
-	if API_KEY == "" {
-		return
-	}
-	e := getLuis(t)
-	res, err := e.ActionChannels()
+// func TestActionChannels(t *testing.T) {
+// 	if API_KEY == "" {
+// 		return
+// 	}
+// 	e := getLuis(t)
+// 	res, err := e.ActionChannels()
 
-	if err != nil {
-		t.Error("Error happen on :", err.Err)
-	}
-	fmt.Println("Got response:", string(res))
-}
+// 	if err != nil {
+// 		t.Error("Error happen on :", err.Err)
+// 	}
+// 	fmt.Println("Got response:", string(res))
+// }
 
 // func TestPredict(t *testing.T) {
 // 	if API_KEY == "" {
@@ -86,16 +86,16 @@ func TestTrain(t *testing.T) {
 	fmt.Println("Got response:", string(res))
 }
 
-func TestExample(t *testing.T) {
-	if API_KEY == "" {
-		return
-	}
-	e := getLuis(t)
-	ex := ExampleJson{ExampleText: "test", SelectedIntentName: "test2"}
-	res, err := e.AddLabel(ex)
+// func TestExample(t *testing.T) {
+// 	if API_KEY == "" {
+// 		return
+// 	}
+// 	e := getLuis(t)
+// 	ex := ExampleJson{ExampleText: "test", SelectedIntentName: "test2"}
+// 	res, err := e.AddLabel(ex)
 
-	if err != nil {
-		t.Error("Error happen on :", err.Err)
-	}
-	fmt.Println("Got response:", string(res))
-}
+// 	if err != nil {
+// 		t.Error("Error happen on :", err.Err)
+// 	}
+// 	fmt.Println("Got response:", string(res))
+// }
