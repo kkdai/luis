@@ -30,6 +30,7 @@ func NewLuis(key string, appid string) *Luis {
 	}
 	app := NewAppInfo(res)
 	fmt.Println(app)
+
 	e.versionid = app.Endpoints.PRODUCTION.VersionID
 	fmt.Println(e.versionid)
 	return e
@@ -39,6 +40,7 @@ func NewLuis(key string, appid string) *Luis {
 func (l *Luis) GetAppInfo() ([]byte, *ErrorResponse) {
 	url := getAppInfo(l.appid)
 	fmt.Println("app detail URL=", url)
+
 	return l.client.Connect("GET", url, nil, true)
 }
 

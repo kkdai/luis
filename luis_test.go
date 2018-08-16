@@ -79,6 +79,7 @@ func TestTrain(t *testing.T) {
 	}
 	e := getLuis(t)
 	res, err := e.Train()
+	
 
 	if err != nil {
 		t.Error("Error happen on :", err.Err)
@@ -91,7 +92,7 @@ func TestTrain(t *testing.T) {
 // 		return
 // 	}
 // 	e := getLuis(t)
-// 	ex := ExampleJson{ExampleText: "test", SelectedIntentName: "test2"}
+// 	ex := Example Json{ExampleText: "test", SelectedIntentName: "test2"}
 // 	res, err := e.AddLabel(ex)
 
 // 	if err != nil {
