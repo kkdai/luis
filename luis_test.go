@@ -11,8 +11,6 @@ import (
 var API_KEY string
 var APPID string
 
-const ()
-
 func init() {
 	API_KEY = os.Getenv("SUB_KEY")
 	APPID = os.Getenv("APP_ID")
