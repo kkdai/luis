@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"net/url"
 )
 
 //Luis :
@@ -62,9 +63,10 @@ func (l *Luis) ActionChannels() ([]byte, *ErrorResponse) {
 //Predict :get Train Model Predictions
 //gets the trained model predictions for the input examples
 func (l *Luis) Predict(utterance string) ([]byte, *ErrorResponse) {
-	url := getPredictURL(l.appid, l.versionid)
-	data := getStringDataByteBuffer(utterance)
-	return l.client.Connect("POST", url, data, true)
+	outUrl := getPredictURL(l.appid, l.versionid)
+	utterance = url.QueryEscape(utterance)
+	outUrl = outUrl + "?subscription-key=" + l.client.key + "&q=" + utterance
+	return l.client.Connect("GET", outUrl, nil, true)
 }
 
 //Train :Training Status

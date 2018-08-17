@@ -88,13 +88,16 @@ type IntentsResultType struct {
 }
 
 //PredictResponse :
-type PredictResponse []struct {
-	IntentsResults  []IntentsResultType `json:"IntentsResults"`
-	EntitiesResults []interface{}       `json:"EntitiesResults"`
-	UtteranceText   string              `json:"utteranceText"`
-	TokenizedText   []string            `json:"tokenizedText"`
-	ExampleID       string              `json:"exampleId"`
-	Metadata        interface{}         `json:"metadata"`
+type PredictResponse struct {
+	Query            string        `json:"query"`
+	TopScoringIntent IntentScore   `json:"topScoringIntent"`
+	TotalIntents     []IntentScore `json:"intents"`
+	Entities         interface{}   `json:"entities"`
+}
+
+type IntentScore struct {
+	Intent string  `json:"intent"`
+	Score  float32 `json:"score"`
 }
 
 //NewPredictResponse :
@@ -109,15 +112,6 @@ func NewPredictResponse(raw []byte) *PredictResponse {
 }
 
 //GetBestScoreIntent :Get the best score intent prediction
-func GetBestScoreIntent(preResult *PredictResponse) IntentsResultType {
-	bestResultIndex := 0
-	bestResultScore := -1.0
-
-	for k, v := range (*preResult)[0].IntentsResults {
-		if bestResultScore < v.Score {
-			bestResultScore = v.Score
-			bestResultIndex = k
-		}
-	}
-	return (*preResult)[0].IntentsResults[bestResultIndex]
+func GetBestScoreIntent(preResult *PredictResponse) IntentScore {
+	return preResult.TopScoringIntent
 }

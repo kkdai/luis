@@ -29,7 +29,7 @@ func getActionChannels(apid string, versionid string) string {
 }
 
 func getPredictURL(apid string, versionid string) string {
-	return LuisURL + apid + "/versions/" + versionid + "/" + LuisAPIPredict
+	return "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/" + apid
 }
 
 func getTrainURL(apid string, versionid string) string {

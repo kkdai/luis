@@ -59,19 +59,19 @@ func TestIntentList(t *testing.T) {
 // 	fmt.Println("Got response:", string(res))
 // }
 
-// func TestPredict(t *testing.T) {
-// 	if API_KEY == "" {
-// 		return
-// 	}
-// 	e := getLuis(t)
-// 	res, err := e.Predict("test string")
+func TestPredict(t *testing.T) {
+	if API_KEY == "" {
+		return
+	}
+	e := getLuis(t)
+	res, err := e.Predict("dasda sdads")
 
-// 	if err != nil {
-// 		t.Error("Error happen on :", err.Err)
-// 	}
-// 	fmt.Println("Got response:", string(res))
-// 	fmt.Println("Get the best predict result:", GetBestScoreIntent(NewPredictResponse(res)))
-// }
+	if err != nil {
+		t.Error("Error happen on :", err.Err)
+	}
+	fmt.Println("Got response:", string(res))
+	fmt.Println("Get the best predict result:", GetBestScoreIntent(NewPredictResponse(res)))
+}
 
 func TestTrain(t *testing.T) {
 	if API_KEY == "" {
@@ -79,7 +79,6 @@ func TestTrain(t *testing.T) {
 	}
 	e := getLuis(t)
 	res, err := e.Train()
-	
 
 	if err != nil {
 		t.Error("Error happen on :", err.Err)
