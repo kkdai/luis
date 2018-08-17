@@ -7,7 +7,7 @@ import (
 	"github.com/prometheus/common/log"
 )
 
-func main() {
+func ExamplePredict() {
 	var API_KEY string
 	var APPID string
 
