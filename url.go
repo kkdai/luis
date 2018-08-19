@@ -15,6 +15,10 @@ const (
 	LuisAPITrain string = "train"
 	//LuisAPIAddExample :API Add Label
 	LuisAPIAddExample string = "example"
+	//LuisAPIPublish :API Publish your application
+	LuisAPIPublish string = "publish"
+	//LuisAPIVersion :API Get application version
+	LuisAPIVersion string = "version"
 )
 
 func getAppInfo(appid string) string {
@@ -38,4 +42,12 @@ func getTrainURL(apid string, versionid string) string {
 
 func getAddExampleURL(apid string, versionid string) string {
 	return LuisURL + apid + "/versions/" + versionid + "/" + LuisAPIAddExample
+}
+
+func getPublishURL(apid string, versionid string) string {
+	return LuisURL + apid + "/" + LuisAPIPublish
+}
+
+func getVersionURL(apid string, versionid string) string {
+	return LuisURL + apid + "/versions/"
 }

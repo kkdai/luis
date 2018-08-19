@@ -78,7 +78,7 @@ func (l *Luis) Train() ([]byte, *ErrorResponse) {
 
 //AddLabel :Add Label
 // Adds a labeled example to the specified application
-func (l *Luis) AddLabel(example ExampleJson) ([]byte, *ErrorResponse) {
+func (l *Luis) AddLabel(example ExamplePayload) ([]byte, *ErrorResponse) {
 	url := getAddExampleURL(l.appid, l.versionid)
 	bytExample, err := json.Marshal(example)
 	if err != nil {
@@ -86,4 +86,40 @@ func (l *Luis) AddLabel(example ExampleJson) ([]byte, *ErrorResponse) {
 		return nil, nil
 	}
 	return l.client.Connect("POST", url, bytes.NewBuffer(bytExample), true)
+}
+
+//Publish :Publishes a specific version of the application
+func (l *Luis) Publish(payload PublishPayload) ([]byte, *ErrorResponse) {
+	url := getPublishURL(l.appid, l.versionid)
+	bytPayload, err := json.Marshal(payload)
+	if err != nil {
+		log.Println("err:", err)
+		return nil, nil
+	}
+	return l.client.Connect("POST", url, bytes.NewBuffer(bytPayload), true)
+}
+
+//Version :Get application version
+func (l *Luis) Version(versionID string) ([]byte, *ErrorResponse) {
+	outUrl := getVersionURL(l.appid, l.versionid)
+	versionID = url.QueryEscape(versionID)
+	outUrl = outUrl + "/" + versionID + "/"
+	return l.client.Connect("GET", outUrl, nil, true)
+}
+
+//Version :Get application version
+func (l *Luis) Versions() ([]byte, *ErrorResponse) {
+	outUrl := getVersionURL(l.appid, l.versionid)
+	outUrl = outUrl + "/"
+	return l.client.Connect("GET", outUrl, nil, true)
+}
+
+func (l *Luis) GetCurrentProductionVersion() (string, *ErrorResponse) {
+	if l.versionid != "" {
+		return l.versionid, nil
+	}
+	return "", &ErrorResponse{
+		ErrorCode: 500,
+		Err:       fmt.Errorf("No production model.\n"),
+	}
 }

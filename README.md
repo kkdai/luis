@@ -113,6 +113,8 @@ Implemented APIs
 - [predict](https://dev.projectoxford.ai/docs/services/56d95961e597ed0f04b76e58/operations/56f8a55119845511c81de479)
 - [train](https://dev.projectoxford.ai/docs/services/56d95961e597ed0f04b76e58/operations/56f8a55119845511c81de483)
 - [example](https://dev.projectoxford.ai/docs/services/56d95961e597ed0f04b76e58/operations/56f8a55119845511c81de461)
+- Versions
+- Publish
 
 
 Unimplement APIs (Yet)

@@ -70,7 +70,6 @@ func TestPredict(t *testing.T) {
 	fmt.Println("Got response:", string(res))
 	fmt.Println("Get the best predict result:", GetBestScoreIntent(NewPredictResponse(res)))
 }
-
 func TestTrain(t *testing.T) {
 	if API_KEY == "" {
 		return
@@ -97,3 +96,42 @@ func TestTrain(t *testing.T) {
 // 	}
 // 	fmt.Println("Got response:", string(res))
 // }
+
+func TestVersion(t *testing.T) {
+	if API_KEY == "" {
+		return
+	}
+	e := getLuis(t)
+	res, err := e.Versions()
+
+	if err != nil {
+		t.Error("Error happen on :", err.Err)
+	}
+	fmt.Println("Got response:", string(res))
+
+	res, err = e.Version("0.1")
+
+	if err != nil {
+		t.Error("Error happen on :", err.Err)
+	}
+	fmt.Println("Got response:", string(res))
+}
+
+func TestPublish(t *testing.T) {
+	if API_KEY == "" {
+		return
+	}
+	e := getLuis(t)
+	ver, _ := e.GetCurrentProductionVersion()
+	t.Log("ver:", ver)
+	res, err := e.Publish(PublishPayload{
+		VersionID: ver,
+		IsStaging: false,
+		Region:    "westus",
+	})
+
+	if err != nil {
+		t.Error("Error happen on :", err.Err)
+	}
+	fmt.Println("Got response:", string(res))
+}

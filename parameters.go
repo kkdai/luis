@@ -43,8 +43,8 @@ func getStringDataByteBuffer(userData string) *bytes.Buffer {
 
 }
 
-//ExampleJson :
-type ExampleJson struct {
+//ExamplePayload :
+type ExamplePayload struct {
 	ExampleText        string `json:"text"`
 	SelectedIntentName string `json:"intentName"`
 	EntityLabels       []struct {
@@ -52,4 +52,10 @@ type ExampleJson struct {
 		StartToken int    `json:"startCharIndex"`
 		EndToken   int    `json:"endCharIndex"`
 	} `json:"entityLabels,omitempty"`
+}
+
+type PublishPayload struct {
+	VersionID string `json:"versionId"`
+	IsStaging bool   `json:"isStaging"`
+	Region    string `json:"region"`
 }

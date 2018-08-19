@@ -32,7 +32,7 @@ func Example() {
 	fmt.Println("Luis Intent Ret", result)
 
 	//Add utterances
-	ex := luis.ExampleJson{ExampleText: "test", SelectedIntentName: "test2"}
+	ex := luis.ExamplePayload{ExampleText: "test", SelectedIntentName: "test2"}
 	res, err = e.AddLabel(ex)
 
 	//Train it
