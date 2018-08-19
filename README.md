@@ -108,11 +108,11 @@ func main() {
 Implemented APIs
 ---------------
 
-- [actionChannels](https://dev.projectoxford.ai/docs/services/56d95961e597ed0f04b76e58/operations/5739a8c71984550500affdfa)
-- [intents](https://dev.projectoxford.ai/docs/services/56d95961e597ed0f04b76e58/operations/56f8a55119845511c81de467)
-- [predict](https://dev.projectoxford.ai/docs/services/56d95961e597ed0f04b76e58/operations/56f8a55119845511c81de479)
-- [train](https://dev.projectoxford.ai/docs/services/56d95961e597ed0f04b76e58/operations/56f8a55119845511c81de483)
-- [example](https://dev.projectoxford.ai/docs/services/56d95961e597ed0f04b76e58/operations/56f8a55119845511c81de461)
+- actionChannels
+- intents
+- predict
+- train
+- example
 - Versions
 - Publish
 
