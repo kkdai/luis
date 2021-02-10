@@ -1,7 +1,7 @@
 LUIS.ai for Golang
 ======================
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/kkdai/luis/master/LICENSE)  [![GoDoc](https://godoc.org/github.com/kkdai/luis?status.svg)](https://godoc.org/github.com/kkdai/luis)  [![Build Status](https://travis-ci.org/kkdai/luis.svg)](https://travis-ci.org/kkdai/luis)
- 
+![Go](https://github.com/kkdai/luis/workflows/Go/badge.svg) 
 
 
 ## Language Understanding Intelligent Service (LUIS)
